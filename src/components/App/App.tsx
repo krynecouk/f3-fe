@@ -3,6 +3,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import { history } from "services/router";
 import * as routes from "services/router/routes";
 import { HomeScene, LoginScene } from "scenes";
+import './App.scss';
 
 export const App = () => (
   <Router history={history}>

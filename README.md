@@ -74,9 +74,10 @@ In Preferences | Languages & Frameworks | JavaScript | Libraries, press Download
 ## TODO
 
 - localisation
-- add sass support (styled-components?)
+- add styled-components?, css modules?
 - hash history/catch-all routing?
 - add build timestamp
+- font replace link with component asset
 
 ## License
 

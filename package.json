@@ -13,6 +13,7 @@
     "@types/react-router-dom": "^5.1.2",
     "axios": "^0.19.0",
     "history": "latest",
+    "node-sass": "^4.13.0",
     "ramda": "^0.26.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

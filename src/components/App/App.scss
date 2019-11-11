@@ -1,18 +1,47 @@
+@import "styles/colors";
+
 * {
   margin: 0;
   padding: 0;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 html {
   font-size: 62.5%; // 10 px
+  box-sizing: border-box;
 }
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.7;
-  color: #404040;
-  box-sizing: border-box;
+  line-height: 1.6;
+  color: $font-color-dark;
+  background-color: $color-background;
+}
+
+#root {
+  display: grid;
+  grid-template:
+    [header-first] "header header" 5rem [header-last]
+    [main-first] "main main" minmax(calc(100vh - 7.5rem), auto) [main-last]
+    [footer-first] "footer footer" 2.5rem [footer-last]
+    / 25rem; // space for future sidebar with nav
+
+  & > header {
+    grid-area: header;
+  }
+
+  & > main {
+    grid-area: main;
+  }
+
+  & > footer {
+    grid-area: footer;
+  }
 }

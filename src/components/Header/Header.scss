@@ -1,0 +1,25 @@
+@import "styles/colors";
+
+.page-header {
+  background-color: $color-primary;
+  color: $font-color-light;
+  display: grid;
+  grid-template-columns: [header-first] 20rem 1fr 20rem [header-last];
+  justify-items: center;
+  align-items: center;
+
+  &__logo {
+    cursor: pointer;
+    grid-column-start: header-first;
+    font-weight: 900;
+
+    &--f {
+      font-size: 3.2rem;
+    }
+  }
+
+  &__user {
+    grid-column-end: header-last;
+    font-weight: 600;
+  }
+}

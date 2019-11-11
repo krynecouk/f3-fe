@@ -7,6 +7,14 @@
 - node: >= 10.X
 - npm: >= 6.X
 
+#### Browser support
+- Edge: >= 16
+- Firefox: >= 52
+- Chrome: >= 57
+- Safari: >= 10.1
+- Opera: >= 44
+- Internet Explorer: not supported
+
 ### How to start
 
 1. `npm start`
@@ -34,8 +42,8 @@ With Prettier Intellij plugin ([How to use Prettier plugin](https://www.jetbrain
 
 ### How to use IntelliSense in `imports`
 
-Intellij does not support `jsconfig` yet. In order to use IntelliSense, mark `src` folder as source folder
-(Mark directory as/Resource root) and enable Use paths relative to the project, resource or sources roots in Settings | Editor | Code Style | JavaScript | Imports.
+Intellij does not support `tsconfig` yet. In order to use IntelliSense, mark `src` folder as resource folder
+(Mark directory as/Resource root) and enable _Use paths relative to the project_, resource or sources roots in Settings | Editor | Code Style | Typescript | Imports.
 More info [here](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360003454280-BaseURL-Support-in-Webstorm).
 
 ### How to use IntelliSense in test suites
@@ -46,6 +54,10 @@ In Preferences | Languages & Frameworks | JavaScript | Libraries, press Download
 
 - React components: PascalCase (e.g. LoginScene)
 - Other js files: kebab-case (e.g. fn-utils)
+
+### HTML classes naming convention
+
+In this project is used BEM (Block Element Modifier) naming convention for classes. For more info go [here](http://getbem.com/naming/).
 
 ## Docker
 

@@ -1,0 +1,13 @@
+@import "styles/colors";
+
+.page-footer {
+  background-color: $color-tertiary;
+  color: $font-color-light;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+
+  &__version {
+    align-self: center;
+  }
+}

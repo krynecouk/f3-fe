@@ -1,13 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "store/auth/actions";
 
-interface LogoutProps {
-  onLogout: () => void;
-}
-
-export const Logout = (props: LogoutProps) => {
+export const Logout = () => {
+  const dispatch = useDispatch();
   return (
     <div className="logout">
-      <button onClick={() => props.onLogout()}>Logout</button>
+      <button onClick={() => dispatch(logout())}>Logout</button>
     </div>
   );
 };

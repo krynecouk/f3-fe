@@ -1,12 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "store/auth/actions";
 
-interface LoginProps {
-  onLogin: (username: string, password: string) => void;
-}
-
-export const Login = (props: LoginProps) => {
+export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   return (
     <div className="login">
@@ -26,7 +25,7 @@ export const Login = (props: LoginProps) => {
         />
       </div>
       <div className="submit">
-        <button onClick={() => props.onLogin(username, password)}>
+        <button onClick={() => dispatch(login(username, password))}>
           Submit
         </button>
       </div>

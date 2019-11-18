@@ -1,18 +1,14 @@
 import React from "react";
 import { Logout } from "./Logout";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, fireEvent, cleanup } from "utils/test-utils";
+import { logout } from "store/auth/actions";
 
 describe("<Logout />", () => {
-  const logout = (onLogout: () => void) =>
-    render(<Logout onLogout={onLogout} />);
-
   const logoutMock = () => {
-    const onLogout = jest.fn();
-    const renderResult = logout(onLogout);
+    const renderResult = render(<Logout />);
     return {
       ...renderResult,
-      logoutButton: renderResult.getByText(/logout/i),
-      onLogout
+      logoutButton: renderResult.getByText(/logout/i)
     };
   };
 
@@ -32,18 +28,21 @@ describe("<Logout />", () => {
     expect(logoutButton).toContainHTML("button");
   });
 
-  it("should execute fn on logout button click", () => {
-    const { logoutButton, onLogout } = logoutMock();
+  it("should dispatch logout action on every button click", () => {
+    const { logoutButton, dispatch } = logoutMock();
 
-    expect(onLogout).toHaveBeenCalledTimes(0);
-
-    fireEvent.click(logoutButton);
-
-    expect(onLogout).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledTimes(0);
 
     fireEvent.click(logoutButton);
-    fireEvent.click(logoutButton);
 
-    expect(onLogout).toHaveBeenCalledTimes(3);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(logout());
+
+    fireEvent.click(logoutButton);
+    expect(dispatch).toHaveBeenCalledWith(logout());
+    fireEvent.click(logoutButton);
+    expect(dispatch).toHaveBeenCalledWith(logout());
+
+    expect(dispatch).toHaveBeenCalledTimes(3);
   });
 });

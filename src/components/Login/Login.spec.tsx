@@ -1,13 +1,11 @@
 import React from "react";
 import { Login } from "./Login";
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { cleanup, fireEvent, render } from "utils/test-utils";
+import { login } from "store/auth/actions";
 
 describe("<Login />", () => {
-  const login = (onLogin: () => void) => render(<Login onLogin={onLogin} />);
-
   const loginMock = () => {
-    const onLogin = jest.fn();
-    const renderResult = login(onLogin);
+    const renderResult = render(<Login />);
     return {
       ...renderResult,
       usernameInput: renderResult.getByPlaceholderText(
@@ -16,8 +14,7 @@ describe("<Login />", () => {
       passwordInput: renderResult.getByPlaceholderText(
         /password/i
       ) as HTMLInputElement,
-      submitButton: renderResult.getByText(/submit/i),
-      onLogin
+      submitButton: renderResult.getByText(/submit/i)
     };
   };
 
@@ -85,18 +82,46 @@ describe("<Login />", () => {
     expect(submitButton).toContainHTML("button");
   });
 
-  it("should execute fn on submit button click", () => {
-    const { submitButton, onLogin } = loginMock();
+  it("should dispatch login action on every submit button click", () => {
+    const { submitButton, dispatch } = loginMock();
 
-    expect(onLogin).toHaveBeenCalledTimes(0);
+    expect(dispatch).toHaveBeenCalledTimes(0);
+
+    fireEvent.click(submitButton);
+
+    expect(dispatch).toHaveBeenCalledTimes(1);
+
+    fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
+
+    expect(dispatch).toHaveBeenCalledTimes(3);
+  });
+
+  it("should dispatch login action with username and password on submit button click", () => {
+    const {
+      usernameInput,
+      passwordInput,
+      submitButton,
+      dispatch
+    } = loginMock();
+
+    fireEvent.change(usernameInput, {
+      target: {
+        value: "harry"
+      }
+    });
+
+    fireEvent.change(passwordInput, {
+      target: {
+        value: "123"
+      }
+    });
+
+    expect(dispatch).toHaveBeenCalledTimes(0);
 
     fireEvent.click(submitButton);
 
-    expect(onLogin).toHaveBeenCalledTimes(1);
-
-    fireEvent.click(submitButton);
-    fireEvent.click(submitButton);
-
-    expect(onLogin).toHaveBeenCalledTimes(3);
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith(login("harry", "123"));
   });
 });

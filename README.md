@@ -52,7 +52,7 @@ In Preferences | Languages & Frameworks | JavaScript | Libraries, press Download
 
 ### File Naming Conventions
 
-- React components: PascalCase (e.g. LoginScene)
+- React components: PascalCase (e.g. LoginScreen)
 - Other js files: kebab-case (e.g. fn-utils)
 
 ### HTML classes naming convention

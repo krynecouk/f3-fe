@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { f3 } from "services/api";
+import { f3 } from "api";
 import { Logout } from "components";
-import { history } from "services/router";
-import * as routes from "services/router/routes";
-import { authService as as } from "services/auth";
 
-export const HomeScene = () => {
+export const HomeScreen = () => {
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
@@ -20,13 +17,8 @@ export const HomeScene = () => {
     <div>
       <div>Number of entries: {entries.length}</div>
       <div>
-        <Logout onLogout={logout} />
+        <Logout />
       </div>
     </div>
   );
-};
-
-const logout = () => {
-  as.removeAuth();
-  history.push(routes.LOGIN);
 };

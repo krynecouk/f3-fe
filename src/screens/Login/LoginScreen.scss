@@ -1,0 +1,32 @@
+@import "styles/colors";
+
+#modal__login {
+  & .modal__content {
+    width: 35rem;
+    height: 40rem;
+  }
+}
+
+.login {
+  & .input--wrapper {
+    display: block;
+    width: 100%;
+  }
+
+  &__username {
+    margin-bottom: 1rem;
+  }
+
+  & .btn {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    width: calc(100% - 2rem);
+  }
+
+  &__error {
+    width: 100%;
+    margin-top: 3rem;
+    text-align: center;
+  }
+}

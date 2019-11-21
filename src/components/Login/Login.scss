@@ -1,0 +1,18 @@
+@import "styles/colors";
+
+.login {
+  &__error {
+    font-weight: 600;
+    color: $color-invalid;
+  }
+
+  & .btn {
+    &--valid {
+      background-color: $color-valid;
+    }
+
+    &--invalid {
+      background-color: $color-invalid;
+    }
+  }
+}

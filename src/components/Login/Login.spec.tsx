@@ -14,7 +14,7 @@ describe("<Login />", () => {
       passwordInput: renderResult.getByPlaceholderText(
         /password/i
       ) as HTMLInputElement,
-      submitButton: renderResult.getByText(/submit/i)
+      submitButton: renderResult.getByText(/sign-in/i)
     };
   };
 

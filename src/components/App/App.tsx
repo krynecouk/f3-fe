@@ -5,6 +5,7 @@ import * as routes from "router/routes";
 import { HomeScreen, LoginScreen } from "screens";
 import { Header, Footer, Main } from "components";
 import "./App.scss";
+import "styles/utilities.scss";
 
 export const App = () => {
   return (

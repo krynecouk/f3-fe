@@ -1,0 +1,31 @@
+@import "styles/colors";
+@import "styles/mixins";
+
+.btn {
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  background-color: $color-secondary;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  color: $font-color-light;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+    transform: translateY(-0px);
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}

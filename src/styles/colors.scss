@@ -1,7 +1,15 @@
 $color-primary: #ff6a5c;
 $color-secondary: #056571;
 $color-tertiary: #414141;
-$color-background: #f7f7f7;
+
+$color-white: #fff;
+$color-black: #000;
+
+$color-background-light: #f7f7f7;
+$color-background-dark: rgba($color-black, 0.8);
+
+$color-invalid: $color-primary;
+$color-valid: $color-secondary;
 
 $font-color-light: #feffff;
 $font-color-dark: #17252a;

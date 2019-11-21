@@ -1,0 +1,64 @@
+@import "styles/colors";
+@import "styles/mixins";
+
+.input--wrapper {
+  display: inline-block;
+
+  & .input {
+    width: 100%;
+    font-size: 1.5rem;
+    font-family: inherit;
+    padding: 1.5rem 2rem;
+    background-color: $color-background-light;
+    border: none;
+    display: inline-block;
+    color: inherit;
+    margin-bottom: 2px;
+    border-bottom: 1px solid $color-valid;
+
+    &:focus {
+      outline: none;
+      border-bottom: 3px solid $color-valid;
+      margin-bottom: 0;
+    }
+
+    &:required {
+      box-shadow: none;
+    }
+
+    &:invalid,
+    &--invalid {
+      border-bottom: 1px solid $color-invalid;
+      margin-bottom: 2px;
+    }
+
+    &--invalid:focus,
+    &:focus:invalid {
+      border-bottom: 3px solid $color-invalid;
+      margin-bottom: 0;
+    }
+
+    &:placeholder-shown + .label {
+      @include hidden;
+      transform: translateY(-4rem);
+    }
+
+    // webkit css hack to override default background color on input autocomplete
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px $color-background-light inset !important;
+    }
+  }
+
+  & .label {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    display: block;
+    color: inherit;
+    transition: all 0.3s;
+  }
+}

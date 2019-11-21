@@ -1,0 +1,90 @@
+@import "styles/colors";
+@import "styles/mixins";
+
+.modal {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $color-background-dark;
+  transition: all 0.3s;
+
+  &--visible {
+    @include visible;
+  }
+
+  &--hidden {
+    @include hidden;
+  }
+
+  &__content {
+    @include absCenter;
+    @include box-shadow;
+    position: relative;
+    max-width: 85vw;
+    max-height: 85vh;
+    background-color: $color-background-light;
+    border-radius: 3px;
+    overflow: auto;
+    overflow-x: hidden;
+    display: grid;
+    grid-template:
+      [header-first] "header" 5rem [header-last]
+      [main-first] "main" minmax(20rem, auto) [main-last]
+      [footer-first] "footer" auto [footer-last]
+      / minmax(30rem, auto);
+  }
+
+  & header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  &__main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  & footer {
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  &__close {
+    &--visible {
+      @include visible;
+    }
+
+    &--hidden {
+      @include hidden;
+    }
+
+    &:link,
+    &:visited {
+      color: $font-color-dark;
+      font-size: 2.5rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+
+    &:hover,
+    &:focus {
+      color: $color-primary;
+    }
+  }
+}

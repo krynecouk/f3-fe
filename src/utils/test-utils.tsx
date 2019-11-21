@@ -6,13 +6,27 @@ import React from "react";
 import { Provider } from "react-redux";
 import { StoreState } from "store";
 
+const stateMock: StoreState = {
+  auth: {
+    credentials: {
+      accessToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJI",
+      tokenType: "Bearer",
+      expiresIn: 43200
+    },
+    user: {
+      id: "SUPER_ADMIN",
+      name: "harry"
+    }
+  }
+};
+
 const customRender = (ui: React.ReactElement, options?: any) => {
   const dispatch = jest.fn();
 
   const storeMock: Store = {
     ...configureStore([]),
     dispatch: dispatch,
-    getState: jest.fn(),
+    getState: () => stateMock,
     subscribe: jest.fn(),
     replaceReducer: jest.fn(),
     [Symbol.observable]: jest.fn()

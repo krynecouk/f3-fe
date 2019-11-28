@@ -1,6 +1,6 @@
 import React from "react";
 import { Logout } from "./Logout";
-import { render, fireEvent, cleanup } from "utils/test-utils";
+import { cleanup, fireEvent, render } from "utils/test-utils";
 import { logout } from "store/auth/actions";
 
 describe("<Logout />", () => {

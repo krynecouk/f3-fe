@@ -1,26 +1,74 @@
 @import "styles/colors";
 
+@mixin pageHeaderElement {
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba($color-tertiary, 1);
+  }
+}
+
 .page-header {
   background-color: $color-primary;
   color: $font-color-light;
-  display: grid;
-  grid-template-columns: [header-first] 20rem 1fr 20rem [header-last];
-  justify-items: center;
+  line-height: normal;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   z-index: 1;
 
   &__logo {
-    cursor: pointer;
-    grid-column-start: header-first;
-    font-weight: 900;
+    @include pageHeaderElement;
+    margin-left: 2rem;
 
-    &--f {
-      font-size: 3.2rem;
+    & svg.logo {
+      width: 3.3rem;
+      height: 3.3rem;
+      & path {
+        fill: $font-color-light;
+      }
+    }
+
+    & span.company-name {
+      font-weight: 600;
+      font-size: 2.5rem;
+      margin-left: 1rem;
+
+      &:empty {
+        margin: 0;
+      }
     }
   }
 
   &__user {
-    grid-column-end: header-last;
+    height: 100%;
+    margin-right: 2rem;
     font-weight: 600;
+
+    & .dropdown__button--active {
+      & .user-dropdown__button {
+        background-color: rgba($color-tertiary, 1);
+      }
+    }
+
+    & .user-dropdown__button {
+      @include pageHeaderElement;
+
+      & svg.arrow-down {
+        width: 0.8rem;
+        height: 0.8rem;
+        margin-left: 3px;
+        margin-top: 4px;
+
+        & path {
+          fill: $font-color-light;
+        }
+      }
+    }
   }
 }

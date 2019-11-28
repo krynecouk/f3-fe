@@ -1,0 +1,46 @@
+@import "styles/colors";
+@import "styles/mixins";
+
+.dropdown {
+  height: 100%;
+  position: relative;
+
+  &__button {
+    height: 100%;
+  }
+
+  &__menu {
+    @include boxBorder;
+    position: absolute;
+    right: 0;
+    margin-top: 3px;
+    cursor: default;
+    min-height: 4rem;
+    min-width: 15rem;
+    font-weight: normal;
+    color: $font-color-dark;
+    padding: 8px 0;
+    overflow: hidden;
+    background-color: $color-background-light;
+    list-style: none;
+
+    &--visible {
+      @include visible;
+    }
+
+    &--hidden {
+      @include hidden;
+    }
+  }
+
+  &__item {
+    padding: 0.5rem 1.5rem;
+
+    &--clickable {
+      cursor: pointer;
+      &:hover {
+        background-color: rgba($color-tertiary, 0.1);
+      }
+    }
+  }
+}

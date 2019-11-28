@@ -1,11 +1,10 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import { history } from "router";
 import * as routes from "router/routes";
 import { HomeScreen, LoginScreen } from "screens";
-import { Header, Footer, Main } from "components";
+import { Footer, Header, Main } from "components";
 import "./App.scss";
-import "styles/utilities.scss";
 
 export const App = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { BaseSyntheticEvent, FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "store/auth/actions";
-import { Input, Button } from "components";
+import { Button, Input } from "components";
 import { StoreState } from "store";
 import "./Login.scss";
 

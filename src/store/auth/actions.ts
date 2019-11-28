@@ -1,17 +1,17 @@
 import {
-  LOGIN,
-  LOGOUT,
-  LoginAction,
-  LogoutAction,
-  LoginSuccessAction,
-  LOGIN_SUCCESS,
   Auth,
-  LoginErrorAction,
+  LOGIN,
   LOGIN_ERROR,
-  LogoutSuccessAction,
+  LOGIN_SUCCESS,
+  LoginAction,
+  LoginErrorAction,
+  LoginSuccessAction,
+  LOGOUT,
+  LOGOUT_ERROR,
   LOGOUT_SUCCESS,
+  LogoutAction,
   LogoutErrorAction,
-  LOGOUT_ERROR
+  LogoutSuccessAction
 } from "store/auth/types";
 
 export const login = (username: string, password: string): LoginAction => {

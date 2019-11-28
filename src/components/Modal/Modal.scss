@@ -20,12 +20,11 @@
 
   &__content {
     @include absCenter;
-    @include box-shadow;
+    @include boxBorder;
     position: relative;
     max-width: 85vw;
     max-height: 85vh;
     background-color: $color-background-light;
-    border-radius: 3px;
     overflow: auto;
     overflow-x: hidden;
     display: grid;

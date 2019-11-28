@@ -1,10 +1,10 @@
 import {
   Auth,
   AuthAction,
-  LOGIN_SUCCESS,
   LOGIN_ERROR,
-  LOGOUT_SUCCESS,
-  LOGOUT_ERROR
+  LOGIN_SUCCESS,
+  LOGOUT_ERROR,
+  LOGOUT_SUCCESS
 } from "store/auth/types";
 
 const defaultState: Auth = {

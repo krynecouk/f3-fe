@@ -1,6 +1,8 @@
 @import "styles/colors";
 
-@mixin box-shadow {
+@mixin boxBorder {
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
   box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
 }
 

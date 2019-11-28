@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { f3 } from "api";
-import { Logout } from "components";
 
 export const HomeScreen = () => {
   const [entries, setEntries] = useState([]);
@@ -16,9 +15,6 @@ export const HomeScreen = () => {
   return (
     <div>
       <div>Number of entries: {entries.length}</div>
-      <div>
-        <Logout />
-      </div>
     </div>
   );
 };

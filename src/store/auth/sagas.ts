@@ -24,7 +24,7 @@ export function* login(action: LoginAction) {
     const { username, password } = payload;
     const response = yield call(f3.auth.login, username, password);
     yield put(loginSuccess(response.data));
-    yield call(() => history.push(routes.HOME));
+    yield call(() => history.push(routes.ROOT));
     return response;
   } catch (error) {
     yield put(loginError(error));

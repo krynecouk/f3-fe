@@ -63,7 +63,7 @@ export const Login = () => {
           <Button
             type="submit"
             text="Sign-In"
-            modifier={isError || !username || !password ? "invalid" : "valid"}
+            isValid={!isError && !!username && !!password}
           />
         </div>
       </form>

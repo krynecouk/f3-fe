@@ -38,7 +38,7 @@ describe("auth sagas", () => {
       await recordSaga(login, loginAction("harry", "123"));
 
       expect(pushMock).toHaveBeenCalledTimes(1);
-      expect(pushMock).toHaveBeenCalledWith(routes.HOME);
+      expect(pushMock).toHaveBeenCalledWith(routes.ROOT);
     });
 
     it("should dispatch LOGIN_SUCCESS", async () => {

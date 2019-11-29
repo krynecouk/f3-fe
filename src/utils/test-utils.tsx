@@ -17,7 +17,11 @@ const stateMock: StoreState = {
       id: "SUPER_ADMIN",
       name: "harry"
     }
-  }
+  },
+  app: {
+    apps: []
+  },
+  entry: {}
 };
 
 const customRender = (ui: React.ReactElement, options?: any) => {

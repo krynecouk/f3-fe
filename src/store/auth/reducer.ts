@@ -1,21 +1,21 @@
 import {
-  Auth,
   AuthAction,
+  AuthState,
   LOGIN_ERROR,
   LOGIN_SUCCESS,
   LOGOUT_ERROR,
   LOGOUT_SUCCESS
 } from "store/auth/types";
 
-const defaultState: Auth = {
+const defaultState: AuthState = {
   credentials: {},
   user: {}
 };
 
 export const authReducer = (
-  state: Auth | undefined = defaultState,
+  state: AuthState | undefined = defaultState,
   action: AuthAction
-): Auth => {
+): AuthState => {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return action.payload;

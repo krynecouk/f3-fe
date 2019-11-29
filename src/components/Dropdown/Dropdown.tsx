@@ -9,11 +9,14 @@ import "./Dropdown.scss";
 type DropdownItem = {
   name: string;
   onClick?: (e: ReactMouseEvent<HTMLLIElement>) => void;
+  isMain?: boolean;
 };
+
+type DropdownSeparator = "---";
 
 interface DropdownProps {
   button: JSX.Element;
-  items: DropdownItem[];
+  items: (DropdownItem | DropdownSeparator)[];
 }
 
 export const Dropdown = ({ button, items }: DropdownProps) => {
@@ -40,6 +43,25 @@ export const Dropdown = ({ button, items }: DropdownProps) => {
     setVisible(false);
   };
 
+  const dropdownItem = ({ name, onClick, isMain }: DropdownItem) => {
+    return (
+      <li
+        key={`dropdown__item--${name}`}
+        className={`dropdown__item 
+            ${onClick ? "dropdown__item--clickable" : ""}
+            ${isMain ? "dropdown__item--main" : ""}`}
+        onClick={e => {
+          if (onClick) {
+            onClick(e);
+          }
+          setVisible(false);
+        }}
+      >
+        {name}
+      </li>
+    );
+  };
+
   return (
     <div ref={node} className="dropdown">
       <div
@@ -55,21 +77,9 @@ export const Dropdown = ({ button, items }: DropdownProps) => {
           isVisible ? "visible" : "hidden"
         }`}
       >
-        {items.map(({ name, onClick }) => (
-          <li
-            key={`dropdown__item--${name}`}
-            className={`dropdown__item ${onClick &&
-              "dropdown__item--clickable"}`}
-            onClick={e => {
-              if (onClick) {
-                onClick(e);
-              }
-              setVisible(false);
-            }}
-          >
-            {name}
-          </li>
-        ))}
+        {items.map((item, index) =>
+          typeof item === "string" ? <hr key={index} /> : dropdownItem(item)
+        )}
       </ul>
     </div>
   );

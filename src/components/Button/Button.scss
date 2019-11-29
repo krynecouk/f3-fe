@@ -13,6 +13,14 @@
   cursor: pointer;
   transition: all 0.2s;
 
+  &--valid {
+    background-color: $color-valid;
+  }
+
+  &--invalid {
+    background-color: $color-invalid;
+  }
+
   &:focus,
   &:hover {
     outline: none;

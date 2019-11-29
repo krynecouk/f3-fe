@@ -30,8 +30,8 @@
     display: grid;
     grid-template:
       [header-first] "header" 5rem [header-last]
-      [main-first] "main" minmax(20rem, auto) [main-last]
-      [footer-first] "footer" auto [footer-last]
+      [main-first] "main" minmax(30rem, auto) [main-last]
+      [footer-first] "footer" max-content [footer-last]
       / minmax(30rem, auto);
   }
 
@@ -53,7 +53,7 @@
   & footer {
     grid-area: footer;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
     padding: 1rem;
   }

@@ -14,19 +14,24 @@ client.interceptors.request.use(request => {
   return request;
 });
 
-client.interceptors.response.use(undefined, error => {
-  const { response } = error;
-  const {
-    status,
-    config: { url }
-  } = response;
-  const isLoginPage = !!url && url.includes("/api/login");
+client.interceptors.response.use(
+  response => response,
+  error => {
+    const { response } = error;
+    if (response) {
+      const {
+        status,
+        config: { url }
+      } = response;
+      const isLoginPage = !!url && url.includes("/api/login");
 
-  if (!isLoginPage && status === 401) {
-    store.dispatch(logout());
+      if (!isLoginPage && status === 401) {
+        store.dispatch(logout());
+      }
+    }
+
+    return Promise.reject(error);
   }
-
-  return Promise.reject(error);
-});
+);
 
 export { client };

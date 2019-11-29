@@ -19,7 +19,7 @@
     min-width: 15rem;
     font-weight: normal;
     color: $font-color-dark;
-    padding: 8px 0;
+    padding: 0.8rem 0;
     overflow: hidden;
     background-color: $color-background-light;
     list-style: none;
@@ -33,6 +33,13 @@
     }
   }
 
+  & hr {
+    margin: 0.8rem auto;
+    padding: 0;
+    border: 0.5px solid #dfdfdf;
+    width: 90%;
+  }
+
   &__item {
     padding: 0.5rem 1.5rem;
 
@@ -41,6 +48,10 @@
       &:hover {
         background-color: rgba($color-tertiary, 0.1);
       }
+    }
+
+    &--main {
+      font-weight: 600;
     }
   }
 }

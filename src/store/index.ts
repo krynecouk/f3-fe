@@ -3,17 +3,25 @@ import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { spawn } from "redux-saga/effects";
 import { authReducer as auth } from "store/auth/reducer";
+import { appReducer as app } from "store/app/reducer";
+import { entryReducer as entry } from "store/entry/reducer";
 import { watchLogin, watchLogout } from "store/auth/sagas";
 import { stateStorage } from "storages";
 import { throttle } from "lodash";
+import { watchFetchApps } from "store/app/sagas";
+import { watchFetchEntry } from "store/entry/sagas";
 
 const rootReducer = combineReducers({
-  auth
+  auth,
+  app,
+  entry
 });
 
 function* rootSaga() {
   yield spawn(watchLogin);
   yield spawn(watchLogout);
+  yield spawn(watchFetchApps);
+  yield spawn(watchFetchEntry);
 }
 
 export type StoreState = ReturnType<typeof rootReducer>;

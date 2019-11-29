@@ -11,6 +11,8 @@ describe("<Dropdown />", () => {
       <Dropdown
         button={<button>DROPDOWN BUTTON</button>}
         items={[
+          { name: "MAIN_DROPDOWN_ITEM", isMain: true },
+          "---",
           {
             name: "DROPDOWN ITEM",
             onClick: itemOnClickMock

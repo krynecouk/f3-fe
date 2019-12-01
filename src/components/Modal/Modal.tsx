@@ -39,7 +39,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
           </a>
         </header>
         <div className="modal__main">{content}</div>
-        {!!footer && <footer>{footer}</footer>}
+        {footer && <footer>{footer}</footer>}
       </section>
     </div>,
     document.querySelector("#modal-root")!

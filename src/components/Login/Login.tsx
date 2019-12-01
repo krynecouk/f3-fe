@@ -1,4 +1,4 @@
-import React, { BaseSyntheticEvent, FormEvent, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "store/auth/actions";
 import { Button, Input } from "components";
@@ -12,12 +12,12 @@ export const Login = () => {
   const error = useSelector((state: StoreState) => state.auth.error);
   const dispatch = useDispatch();
 
-  const onUsernameChange = (e: BaseSyntheticEvent) => {
+  const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChanged(true);
     setUsername(e.target.value);
   };
 
-  const onPasswordChange = (e: BaseSyntheticEvent) => {
+  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChanged(true);
     setPassword(e.target.value);
   };
@@ -63,7 +63,7 @@ export const Login = () => {
           <Button
             type="submit"
             text="Sign-In"
-            isValid={!isError && !!username && !!password}
+            invalid={isError || !username || !password}
           />
         </div>
       </form>

@@ -4,19 +4,19 @@ import "./Button.scss";
 interface ButtonProps {
   text: string;
   type?: "submit" | "button" | "reset";
-  onClick?: (event: React.BaseSyntheticEvent) => void;
-  isValid?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  invalid?: boolean;
   modifier?: string;
 }
 
 export const Button = ({
   modifier,
   text,
-  isValid = true,
+  invalid = false,
   ...props
 }: ButtonProps) => {
   const btnModifier = !!modifier ? `btn--${modifier}` : "";
-  const btnValidModifier = isValid ? "btn--valid" : "btn--invalid";
+  const btnValidModifier = invalid ? "btn--invalid" : "btn--valid";
   return (
     <button className={`btn ${btnModifier} ${btnValidModifier}`} {...props}>
       {text}

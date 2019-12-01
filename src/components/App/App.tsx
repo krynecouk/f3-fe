@@ -1,14 +1,15 @@
 import React from "react";
 import { Route, Router, Switch } from "react-router-dom";
-import { history } from "router";
-import * as routes from "router/routes";
-import { LoginScreen } from "screens";
+import { ENTRY_CREATE, ENTRY_VIEW, history, LOGIN, ROOT } from "router";
 import { Footer, Header, Main } from "components";
+import {
+  EntryCreateScreen,
+  EntryViewScreen,
+  LoginScreen,
+  NotFoundScreen,
+  RootScreen
+} from "screens";
 import "./App.scss";
-import { EntryViewScreen } from "screens/Entry/EntryViewScreen";
-import { NotFoundScreen } from "screens/NotFound/NotFoundScreen";
-import { RootScreen } from "screens/Root/RootScreen";
-import { EntryCreateScreen } from "screens/Entry/EntryCreateScreen";
 
 export const App = () => {
   return (
@@ -16,14 +17,10 @@ export const App = () => {
       <Header />
       <Main>
         <Switch>
-          <Route path={routes.ROOT} exact component={RootScreen} />
-          <Route path={routes.ENTRY_VIEW} exact component={EntryViewScreen} />
-          <Route
-            path={routes.ENTRY_CREATE}
-            exact
-            component={EntryCreateScreen}
-          />
-          <Route path={routes.LOGIN} exact component={LoginScreen} />
+          <Route path={ROOT} exact component={RootScreen} />
+          <Route path={ENTRY_VIEW} exact component={EntryViewScreen} />
+          <Route path={ENTRY_CREATE} exact component={EntryCreateScreen} />
+          <Route path={LOGIN} exact component={LoginScreen} />
           <Route component={NotFoundScreen} />
         </Switch>
       </Main>

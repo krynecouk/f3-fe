@@ -9,8 +9,6 @@ export interface Option {
 interface SelectProps {
   options: Option[];
   onChange: (opt: Option) => void;
-  reset: boolean;
-  styles?: {};
 }
 
 const customStyles = {
@@ -25,16 +23,13 @@ const customStyles = {
   })
 };
 
-export const Select = ({
-  options,
-  onChange,
-  reset = false,
-  styles
-}: SelectProps) => {
+export const Select = ({ options, onChange }: SelectProps) => {
   return (
     <>
       <ReactSelect
-        {...(reset ? { value: null } : {})}
+        className="select"
+        classNamePrefix="select"
+        {...(!options.length ? { value: null } : {})}
         options={options}
         styles={customStyles}
         onChange={({ value, label }: any) => onChange({ value, label })}

@@ -8,7 +8,7 @@ interface InputProps {
   required?: boolean;
   invalid?: boolean;
   autoFocus?: boolean;
-  onChange?: (event: React.BaseSyntheticEvent) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input = ({ invalid, ...props }: InputProps) => {

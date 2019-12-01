@@ -1,21 +1,20 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "store/auth/actions";
 import { StoreState } from "store";
-import { Dropdown } from "components/Dropdown/Dropdown";
+import { history, ROOT } from "router";
+import { useModal } from "hooks/useModal";
+import { CreateModal, Dropdown } from "components";
 import { ReactComponent as Logo } from "./assets/logo.svg";
 import { ReactComponent as ArrowDown } from "./assets/arrow-down.svg";
 import { ReactComponent as Plus } from "./assets/plus.svg";
 import { ReactComponent as User } from "./assets/user.svg";
-import { logout } from "store/auth/actions";
-import { history, ROOT } from "router";
 import "./Header.scss";
-import { useModal } from "hooks";
-import { CreateEntryModal } from "components/CreateEntryModal/CreateEntryModal";
 
 export const Header = () => {
   const COMPANY_NAME = process.env.REACT_APP_NAME;
   const username = useSelector((state: StoreState) => state.auth.user.name);
-  const [visible, toggle] = useModal("hidden");
+  const [isVisible, toggleVisibility] = useModal("hidden");
   const dispatch = useDispatch();
 
   return (
@@ -26,7 +25,7 @@ export const Header = () => {
       </div>
       {username && (
         <div className="page-header__right">
-          <div className="page-header__create" onClick={toggle}>
+          <div className="page-header__create" onClick={toggleVisibility}>
             <span>Create</span>
             <Plus className="plus" />
           </div>
@@ -47,7 +46,7 @@ export const Header = () => {
           </div>
         </div>
       )}
-      <CreateEntryModal visible={visible} toggle={toggle} />
+      <CreateModal visible={isVisible} toggle={toggleVisibility} />
     </header>
   );
 };

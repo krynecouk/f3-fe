@@ -1,9 +1,10 @@
-#modal__create-entry {
+#modal__create {
+  z-index: 1;
   & .modal__content {
     width: 50rem;
     height: 42rem;
 
-    & .create-entry {
+    & .create-form {
       height: 100%;
 
       & form {

@@ -5,6 +5,8 @@ import { StoreState } from "store";
 import { fetchEntry } from "store/entry/actions";
 import { Entry } from "store/entry/types";
 import { App } from "store/app/types";
+import { Field } from "components";
+import "./EntryViewScreen.scss";
 
 export const EntryViewScreen = ({
   match: { params }
@@ -26,12 +28,16 @@ export const EntryViewScreen = ({
   }
 
   return (
-    <div>
+    <div className="entry-view__content">
       {entry.fields.map(field => {
         return (
-          <div key={field.code}>
-            {app.fields[field.code].fieldType} / {field.value}
-          </div>
+          <Field
+            key={field.code}
+            readOnly={true}
+            value={field.value}
+            field={app.fields[field.code]}
+            onChange={() => {}}
+          />
         );
       })}
     </div>

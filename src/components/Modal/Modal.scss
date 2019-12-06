@@ -21,7 +21,6 @@
   &__content {
     @include absCenter;
     @include boxBorder;
-    position: relative;
     max-width: 85vw;
     max-height: 85vh;
     background-color: $color-background-light;
@@ -64,6 +63,15 @@
   }
 
   &__close {
+    cursor: pointer;
+    border: none;
+    background: inherit;
+    color: $font-color-dark;
+    font-size: 2.5rem;
+    text-decoration: none;
+    line-height: 1;
+    transition: all 0.2s;
+
     &--visible {
       @include visible;
     }
@@ -72,17 +80,8 @@
       @include hidden;
     }
 
-    &:link,
-    &:visited {
-      color: $font-color-dark;
-      font-size: 2.5rem;
-      text-decoration: none;
-      transition: all 0.2s;
-      line-height: 1;
-    }
-
-    &:hover,
-    &:focus {
+    &:hover {
+      outline: none;
       color: $color-primary;
     }
   }

@@ -28,15 +28,14 @@ export const Modal: FunctionComponent<ModalProps> = ({
       <section onClick={e => e.stopPropagation()} className="modal__content">
         <header>
           <span className="modal__title">{title}</span>
-          <a
+          <button
             onClick={onDismiss}
-            href="/#"
             className={`modal__close modal__close--${
               onDismiss ? "visible" : "hidden"
             }`}
           >
             &times;
-          </a>
+          </button>
         </header>
         <div className="modal__main">{content}</div>
         {footer && <footer>{footer}</footer>}

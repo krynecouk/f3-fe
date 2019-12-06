@@ -10,7 +10,7 @@ export const Main: FunctionComponent = ({ children }) => {
   useEffect(() => {
     dispatch(fetchApps());
     dispatch(forgetEntry());
-  });
+  }, [dispatch]);
 
   return <main>{children}</main>;
 };

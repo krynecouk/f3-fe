@@ -5,7 +5,7 @@ export const FORGET_ENTRY = "FORGET_ENTRY";
 
 export interface EntryField {
   code: string;
-  value?: string | number | boolean | null;
+  value?: string | number | boolean | string[] | null;
 }
 
 export interface Entry {

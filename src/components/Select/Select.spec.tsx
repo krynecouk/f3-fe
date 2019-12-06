@@ -7,6 +7,7 @@ describe("<Select />", () => {
   const selectMock = () => {
     const renderResult = render(
       <Select
+        placeholder="select..."
         options={[
           { value: "test_option_1", label: "option1" },
           { value: "test_option_2", label: "option2" }

@@ -18,8 +18,8 @@ export const App = () => {
       <Main>
         <Switch>
           <Route path={ROOT} exact component={RootScreen} />
-          <Route path={ENTRY_VIEW} exact component={EntryViewScreen} />
           <Route path={ENTRY_CREATE} exact component={EntryCreateScreen} />
+          <Route path={ENTRY_VIEW} exact component={EntryViewScreen} />
           <Route path={LOGIN} exact component={LoginScreen} />
           <Route component={NotFoundScreen} />
         </Switch>

@@ -8,3 +8,5 @@ export const entryCreate = (
   parentId: string,
   parentFieldCode: string
 ) => `/entry/${appId}/${parentId}/${parentFieldCode}`;
+
+export const entryView = (id: string) => `/entry/${id}`;

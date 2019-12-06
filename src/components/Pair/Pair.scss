@@ -1,0 +1,8 @@
+.pair {
+  display: flex;
+  align-items: baseline;
+
+  & span {
+    padding: 1rem;
+  }
+}

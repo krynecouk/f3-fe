@@ -1,0 +1,18 @@
+.entry-view {
+  &__content {
+    height: 100%;
+    width: 100%;
+    grid-gap: 2rem;
+    padding: 2rem 2rem 10rem;
+    display: grid;
+    grid-template-columns: 15% 1fr 15%;
+
+    & .input--wrapper {
+      width: 100%;
+    }
+
+    & * {
+      grid-column-start: 2;
+    }
+  }
+}

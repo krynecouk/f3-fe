@@ -1,6 +1,6 @@
 {
   "name": "f3-fe",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "dependencies": {
     "@redux-saga/testing-utils": "^1.1.3",

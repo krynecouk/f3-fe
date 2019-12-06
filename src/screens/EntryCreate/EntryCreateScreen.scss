@@ -1,0 +1,39 @@
+@import "styles/colors";
+
+#modal__entry-create {
+  & .modal__content {
+    max-width: 80rem;
+    height: auto;
+  }
+}
+
+#modal__entry-create--error {
+  & .modal__content {
+    border: none;
+    color: $font-color-light;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    background-color: $color-primary;
+  }
+}
+
+.entry-create {
+  &__content {
+    min-width: 50rem;
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 2rem;
+    padding: 2rem 2rem 10rem;
+
+    & .input--wrapper {
+      width: 100%;
+    }
+  }
+
+  & .btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}

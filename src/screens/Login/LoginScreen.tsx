@@ -4,7 +4,7 @@ import "./LoginScreen.scss";
 
 export const LoginScreen = () => {
   return (
-    <div className="login--page">
+    <div className="login__page">
       <Modal id="modal__login" visible title="Sign-In" content={<Login />} />
     </div>
   );

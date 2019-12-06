@@ -2,9 +2,19 @@ export const FETCH_APPS = "FETCH_APPS";
 export const FETCH_APPS_SUCCESS = "FETCH_APPS_SUCCESS";
 export const FETCH_APPS_ERROR = "FETCH_APPS_ERROR";
 
-export interface Field {
+export type AppFieldType =
+  | "plain"
+  | "relationship"
+  | "subapp"
+  | "options"
+  | "enums"
+  | "enum"
+  | "key_value"
+  | "shadow";
+
+export interface AppField {
   fieldCode: string;
-  fieldType: string;
+  fieldType: AppFieldType;
   mandatory: boolean;
 }
 
@@ -12,7 +22,7 @@ export interface App {
   appId: string;
   appFacets: string[];
   applicationHookId?: string | null;
-  fields: { [key: string]: Field };
+  fields: { [key: string]: AppField };
 }
 
 export interface AppState {

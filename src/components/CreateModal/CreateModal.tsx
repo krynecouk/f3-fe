@@ -10,7 +10,7 @@ interface CreateModalProps {
 export const CreateModal = ({ visible, toggle }: CreateModalProps) => {
   return (
     <Modal
-      id="modal__create-entry"
+      id="modal__create"
       visible={visible}
       title="Create Entry"
       onDismiss={toggle}

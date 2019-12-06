@@ -1,5 +1,6 @@
 import React from "react";
 import ReactSelect from "react-select";
+import CreatableReactSelect from "react-select/creatable";
 
 export interface Option {
   value?: string;
@@ -7,10 +8,15 @@ export interface Option {
 }
 
 interface SelectProps {
-  options: Option[];
-  onChange: (opt: Option) => void;
+  options?: Option[];
+  placeholder?: string;
+  onChange: (opt: Option[]) => void;
+  isMulti?: boolean;
+  isCreatable?: boolean;
+  isDisabled?: boolean;
 }
 
+// TODO: make configurable
 const customStyles = {
   control: (provided: any) => ({
     ...provided,
@@ -23,17 +29,47 @@ const customStyles = {
   })
 };
 
-export const Select = ({ options, onChange }: SelectProps) => {
+export const Select = ({
+  options = [],
+  placeholder,
+  onChange,
+  isMulti = false,
+  isCreatable = false,
+  isDisabled = false
+}: SelectProps) => {
+  const attributes: any = {
+    isMulti: isMulti,
+    isDisabled: isDisabled,
+    className: "select",
+    classNamePrefix: "select",
+    options: options,
+    styles: customStyles,
+    placeholder: placeholder ? placeholder : "Select...",
+    noOptionsMessage: isCreatable
+      ? () => "Start typing to create..."
+      : () => "No options",
+    onChange: (newValue: any) => {
+      if (!newValue) {
+        return;
+      }
+      if (!isMulti) {
+        onChange([newValue]);
+      } else {
+        onChange(newValue);
+      }
+    }
+  };
+
   return (
     <>
-      <ReactSelect
-        className="select"
-        classNamePrefix="select"
-        {...(!options.length ? { value: null } : {})}
-        options={options}
-        styles={customStyles}
-        onChange={({ value, label }: any) => onChange({ value, label })}
-      />
+      {isCreatable ? (
+        <CreatableReactSelect {...attributes} />
+      ) : (
+        <ReactSelect
+          {...(!options.length ? { value: null } : {})}
+          {...attributes}
+        />
+      )}
     </>
   );
 };

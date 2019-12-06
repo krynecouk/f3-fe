@@ -39,17 +39,19 @@ export const CreateForm = ({ onCreate }: CreateEntryFormProps) => {
     }
 
     const { appId, parentId, parentFieldCode } = selectedSuggest;
-    history.push(entryCreate(appId, parentId, parentFieldCode));
     onCreate();
+    history.push(entryCreate(appId, parentId, parentFieldCode));
   };
 
   return (
-    <div className="create-entry">
+    <div className="create-form">
       <form onSubmit={onSubmit}>
         <span>Choose type of entry you want to create:</span>
         <Select
           options={options}
-          onChange={(opt: Option) => setSelected(opt)}
+          onChange={(opt: Option[]) => {
+            setSelected(opt[0]);
+          }}
         />
         <Button
           type="submit"

@@ -1,4 +1,5 @@
 export { App } from "./App/App";
+export { Field } from "./Field/Field";
 export { Button } from "./Button/Button";
 export { CreateForm } from "./CreateForm/CreateForm";
 export { CreateModal } from "./CreateModal/CreateModal";
@@ -10,3 +11,5 @@ export { Login } from "./Login/Login";
 export { Main } from "./Main/Main";
 export { Modal } from "./Modal/Modal";
 export { Select } from "./Select/Select";
+export { SubApp } from "./SubApp/SubApp";
+export { Pair } from "./Pair/Pair";

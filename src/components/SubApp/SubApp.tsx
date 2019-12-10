@@ -17,13 +17,10 @@ export const SubApp = ({ fieldCode }: SubAppProps) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let result;
-      if (!entry) {
-        result = await f3.root.get();
-      } else {
-        result = await f3.entry.children(entry.id, fieldCode);
-      }
-      setEntries(result.data);
+      const { data } = !entry
+        ? await f3.root.get()
+        : await f3.entry.children(entry.id, fieldCode);
+      setEntries(data);
     };
     fetchData();
   }, [entry, fieldCode]);

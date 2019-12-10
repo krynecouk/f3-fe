@@ -10,7 +10,7 @@ const client = axios.create({
 
 client.interceptors.request.use(request => {
   const state = store.getState();
-  request.headers.Authorization = `Bearer ${state.auth.credentials.accessToken}`; // FIXME null check in Typescript 3.7
+  request.headers.Authorization = `Bearer ${state?.auth?.credentials?.accessToken}`;
   return request;
 });
 
@@ -18,16 +18,12 @@ client.interceptors.response.use(
   response => response,
   error => {
     const { response } = error;
-    if (response) {
-      const {
-        status,
-        config: { url }
-      } = response;
-      const isLoginPage = !!url && url.includes("/api/login");
+    const status = response?.status;
+    const url = response?.config?.url;
+    const isLoginPage = url?.includes("/api/login");
 
-      if (!isLoginPage && status === 401) {
-        store.dispatch(logout());
-      }
+    if (!isLoginPage && status === 401) {
+      store.dispatch(logout());
     }
 
     return Promise.reject(error);

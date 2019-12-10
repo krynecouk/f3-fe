@@ -25,13 +25,10 @@ export const useSuggests = (
 
   useEffect(() => {
     const fetchData = async () => {
-      let result;
-      if (!entry) {
-        result = await f3.root.suggest();
-      } else {
-        result = await f3.entry.suggest(entry.id);
-      }
-      setSuggests(result.data || EMPTY_SUGGESTS);
+      const { data } = !entry
+        ? await f3.root.suggest()
+        : await f3.entry.suggest(entry.id);
+      setSuggests(data || EMPTY_SUGGESTS);
     };
     fetchData();
   }, [entry]);

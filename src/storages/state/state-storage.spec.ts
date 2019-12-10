@@ -10,7 +10,11 @@ describe("state-storage", () => {
       nullable: null,
       empty: "",
       false: false
-    }
+    },
+    app: {
+      apps: []
+    },
+    entry: {}
   };
 
   beforeEach(() => {

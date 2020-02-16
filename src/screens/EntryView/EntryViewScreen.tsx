@@ -11,7 +11,9 @@ import "./EntryViewScreen.scss";
 export const EntryViewScreen = ({
   match: { params }
 }: RouteComponentProps<{ id: string }>) => {
-  const entry: Entry = useSelector((state: StoreState) => state.entry.current)!;
+  const entry: Entry | undefined = useSelector(
+    (state: StoreState) => state.entry.current
+  );
   const app: App | undefined = useSelector((state: StoreState) => {
     return entry
       ? state.app.apps.find(app => app.appId === entry.appId)

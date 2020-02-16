@@ -1,14 +1,12 @@
 import {
   fetchEntry,
   fetchEntryError,
-  fetchEntrySuccess,
-  forgetEntry
+  fetchEntrySuccess
 } from "store/entry/actions";
 import {
   FETCH_ENTRY,
   FETCH_ENTRY_ERROR,
-  FETCH_ENTRY_SUCCESS,
-  FORGET_ENTRY
+  FETCH_ENTRY_SUCCESS
 } from "store/entry/types";
 
 describe("entry action creators", () => {
@@ -90,13 +88,5 @@ describe("entry action creators", () => {
     expect(
       fetchEntryError("123", { message: "unable to fetch entry" } as Error)
     ).toEqual(expectedAction);
-  });
-
-  it("should create FORGET_ENTRY", () => {
-    const expectedAction = {
-      type: FORGET_ENTRY
-    };
-
-    expect(forgetEntry()).toEqual(expectedAction);
   });
 });

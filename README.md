@@ -1,3 +1,5 @@
+# **NOTE**: Development of 'f3-fe' application was stopped and this repository serves for a reference reasons only. Lot of work is in a TODO state (see [TODO](#todo)).
+
 # f3 frontend application
 
 ## Getting Started
@@ -72,11 +74,6 @@ In this project is used BEM (Block Element Modifier) naming convention for class
 1. `docker run -p 8000:80 dolycloud/f3:fe-<version>`
 2. go to [localhost:8000](http://localhost:8000/)
 
-### How to login into Docker Hub
-
-1. `docker login`
-2. dolycloud/aschuliitsfilefullofourjstrash
-
 ### How to push docker image
 
 1. `docker rmi dolycloud/f3:fe-<version>`
@@ -86,11 +83,10 @@ In this project is used BEM (Block Element Modifier) naming convention for class
 ## TODO
 
 - localisation
-- add styled-components?, css modules?
-- hash history/catch-all routing?
-- add build timestamp
-- font replace link with component asset
+- replace sass for styled-components
+- separete ui components from logic components
+- optimalisation (React.memo, React.useCallback, etc.)
 
 ## License
 
-Copyright (c) 2019 Vonkovy doly, spol. s r.o.
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 2.0 Generic License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/2.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.

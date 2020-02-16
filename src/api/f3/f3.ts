@@ -7,14 +7,16 @@ export const f3 = {
     login: (username: string, password: string) =>
       client.post("/api/login", { name: username, password: password })
   },
-  root: {
-    get: () => client.get("/api/entry"),
-    suggest: () => client.get("/api/entry/suggest-parent"),
-    create: (appId: string, fields: EntryField[]) =>
-      client.post("/api/entry", { appId, fields })
+  entries: {
+    get: () => client.get(`api/entries`),
+    getByParentId: (parentEntryId: string) =>
+      client.get(`api/entries/${parentEntryId}`),
+    getByParentFieldCode: (parentEntryId: string, parentFieldCode: string) =>
+      client.get(`api/entries/${parentEntryId}/${parentFieldCode}`)
   },
   entry: {
-    get: (id: string) => client.get(`/api/entry/${id}`),
+    get: () => client.get(`/api/entry`),
+    getById: (id: string) => client.get(`/api/entry/${id}`),
     create: (
       appId: string,
       parentId: string,
@@ -28,11 +30,11 @@ export const f3 = {
     suggest: (id: string) => client.get(`/api/entry/${id}/suggest-parent`),
     children: (id: string, fieldCode?: string) =>
       fieldCode
-        ? client.get(`/api/entry/${id}/children/${fieldCode}`)
-        : client.get(`/api/entry/${id}/children`)
+        ? client.get(`/api/entries/${id}/${fieldCode}`)
+        : client.get(`/api/entries/${id}`)
   },
   application: {
-    get: (appId: string) => client.get(`/api/application/${appId}`),
-    all: () => client.get("/api/application")
+    get: (appId: string) => client.get(`/api/applications/${appId}`),
+    all: () => client.get("/api/applications")
   }
 };

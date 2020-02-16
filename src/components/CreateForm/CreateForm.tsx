@@ -15,6 +15,7 @@ export const CreateForm = ({ onCreate }: CreateEntryFormProps) => {
   const [suggests] = useSuggests(entry);
   const [selected, setSelected] = useState<Option>({});
 
+  // FIXME: wrong use of memo
   const options: Option[] = useMemo(
     () =>
       suggests.appsHere.map((suggest: Suggest) => {

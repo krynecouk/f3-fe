@@ -1,9 +1,5 @@
 import { entryReducer } from "store/entry/reducer";
-import {
-  FETCH_ENTRY_ERROR,
-  FETCH_ENTRY_SUCCESS,
-  FORGET_ENTRY
-} from "store/entry/types";
+import { FETCH_ENTRY_ERROR, FETCH_ENTRY_SUCCESS } from "store/entry/types";
 
 describe("entry reducer", () => {
   it("should handle FETCH_ENTRY_SUCCESS", () => {
@@ -113,31 +109,5 @@ describe("entry reducer", () => {
         name: "fetch entry error"
       }
     });
-  });
-
-  it("should handle FORGET_ENTRY", () => {
-    expect(
-      entryReducer(
-        {
-          current: {
-            id: "a993638b-6df3-4377-87aa-3f4f0d39b53c",
-            appId: "pracovnik",
-            parentId: "USER_ROOT",
-            parentFieldCode: "USER_ROOT",
-            version: 1,
-            createdAt: "2019-11-27T06:42:45.938Z",
-            fields: [
-              {
-                value: "harry",
-                code: "jmeno"
-              }
-            ]
-          }
-        },
-        {
-          type: FORGET_ENTRY
-        }
-      )
-    ).toEqual({});
   });
 });

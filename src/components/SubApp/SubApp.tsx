@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { StoreState } from "store";
 
 interface SubAppProps {
-  fieldCode?: string;
+  fieldCode: string;
 }
 
 export const SubApp = ({ fieldCode }: SubAppProps) => {
@@ -17,10 +17,8 @@ export const SubApp = ({ fieldCode }: SubAppProps) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = !entry
-        ? await f3.root.get()
-        : await f3.entry.children(entry.id, fieldCode);
-      setEntries(data);
+      const { data } = await f3.entries.getByParentFieldCode(entry!.id, fieldCode);
+      setEntries(data || []);
     };
     fetchData();
   }, [entry, fieldCode]);

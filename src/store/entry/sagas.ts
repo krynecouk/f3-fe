@@ -9,7 +9,7 @@ export function* watchFetchEntry() {
 
 export function* fetchEntry({ payload: { id } }: FetchEntryAction) {
   try {
-    const { data } = yield call(f3.entry.get, id);
+    const { data } = yield call(f3.entry.getById, id);
     yield put(fetchEntrySuccess(data));
   } catch (error) {
     yield put(fetchEntryError(id, error));

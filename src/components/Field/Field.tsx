@@ -1,6 +1,6 @@
 import React from "react";
 import { AppField } from "store/app/types";
-import { Input, Select, Pair, SubApp } from "components";
+import { Input, Pair, Select, SubApp } from "components";
 
 interface FieldProps {
   field: AppField;

@@ -1,7 +1,7 @@
 import React from "react";
 import { AppField } from "store/app/types";
 import { useFieldReducer } from "hooks/useFieldReducer";
-import { Field, Button } from "components";
+import { Button, Field } from "components";
 import { EntryField } from "store/entry/types";
 
 interface EntryCreateProps {

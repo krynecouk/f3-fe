@@ -2,8 +2,7 @@ import {
   EntryAction,
   EntryState,
   FETCH_ENTRY_ERROR,
-  FETCH_ENTRY_SUCCESS,
-  FORGET_ENTRY
+  FETCH_ENTRY_SUCCESS
 } from "store/entry/types";
 import { tagError } from "utils/error-utils";
 
@@ -19,8 +18,6 @@ export const entryReducer = (
     case FETCH_ENTRY_ERROR:
       const { id, error } = action.payload;
       return { ...state, error: tagError(`Entry id: ${id}`, error) };
-    case FORGET_ENTRY:
-      return defaultState;
     default:
       return state;
   }

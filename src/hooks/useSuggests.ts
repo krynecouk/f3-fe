@@ -25,10 +25,8 @@ export const useSuggests = (
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = !entry
-        ? await f3.root.suggest()
-        : await f3.entry.suggest(entry.id);
-      setSuggests(data || EMPTY_SUGGESTS);
+      const response = entry ? await f3.entry.suggest(entry.id) : undefined;
+      setSuggests(response?.data || EMPTY_SUGGESTS);
     };
     fetchData();
   }, [entry]);

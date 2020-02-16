@@ -1,7 +1,6 @@
 export const FETCH_ENTRY = "FETCH_ENTRY";
 export const FETCH_ENTRY_SUCCESS = "FETCH_ENTRY_SUCCESS";
 export const FETCH_ENTRY_ERROR = "FETCH_ENTRY_ERROR";
-export const FORGET_ENTRY = "FORGET_ENTRY";
 
 export interface EntryField {
   code: string;
@@ -44,12 +43,7 @@ export interface FetchEntryErrorAction {
   };
 }
 
-export interface ForgetEntryAction {
-  type: typeof FORGET_ENTRY;
-}
-
 export type EntryAction =
   | FetchEntryAction
   | FetchEntrySuccessAction
-  | FetchEntryErrorAction
-  | ForgetEntryAction;
+  | FetchEntryErrorAction;

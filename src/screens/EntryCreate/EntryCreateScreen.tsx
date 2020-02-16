@@ -41,18 +41,10 @@ export const EntryCreateScreen = ({
           <EntryCreate
             fields={fields}
             onCreate={fields => {
-              // TODO temporary
-              if (parentId === "USER_ROOT") {
-                f3.root
-                  .create(appId, fields)
-                  .then(response => history.push(entryView(response.data.id)))
-                  .catch(setError);
-              } else {
-                f3.entry
-                  .create(appId, parentId, parentFieldCode, fields)
-                  .then(response => history.push(entryView(response.data.id)))
-                  .catch(setError);
-              }
+              f3.entry
+                .create(appId, parentId, parentFieldCode, fields)
+                .then(response => history.push(entryView(response.data.id)))
+                .catch(setError);
             }}
           />
         }

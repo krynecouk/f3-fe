@@ -10,7 +10,11 @@ const client = axios.create({
 
 client.interceptors.request.use(request => {
   const state = store.getState();
-  request.headers.Authorization = `Bearer ${state?.auth?.credentials?.accessToken}`;
+  const accessToken = state?.auth?.credentials?.accessToken;
+  if (!accessToken) {
+      store.dispatch(logout());
+  }
+  request.headers.Authorization = `Bearer ${accessToken}`;
   return request;
 });
 

@@ -1,28 +1,29 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { forgetEntry } from "store/entry/actions";
-import { SubApp } from "components";
-import { Entry } from "store/entry/types";
-import { StoreState } from "store";
+import React, { useEffect, useState } from "react";
+import { EntryViewScreen } from "screens";
+import { useHistory, useLocation, useRouteMatch } from "react-router";
+import { f3 } from "api";
 
 export const RootScreen = () => {
-  const entry: Entry = useSelector((state: StoreState) => state.entry.current)!;
-  const dispatch = useDispatch();
-
+  // FIXME: remove after fix of https://gitlab.com/doly/rypadlo/issues/22
+  const [id, setId] = useState();
   useEffect(() => {
-    dispatch(forgetEntry());
-  }, [dispatch]);
+    const fetchData = async () => {
+      const { data } = await f3.entry.get();
+      setId(data.id);
+    };
+    fetchData();
+  }, []);
+  // END
 
-  if (entry) {
-    return <>Loading...</>;
-  }
+  const history = useHistory();
+  const location = useLocation();
+  const match = useRouteMatch<{ id: string }>();
+  // match.params = { ...match.params, id: ROOT_ID };
+  match.params = { ...match.params, id: id }; // FIXME: remove after fix of https://gitlab.com/doly/rypadlo/issues/22
+
+  console.log(match);
 
   return (
-    <div className="root-view__content">
-      <div>
-        <h4>Root Entries:</h4>
-        <SubApp />
-      </div>
-    </div>
+    <EntryViewScreen history={history} location={location} match={match} />
   );
 };

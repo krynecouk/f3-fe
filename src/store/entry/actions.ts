@@ -5,9 +5,7 @@ import {
   FETCH_ENTRY_SUCCESS,
   FetchEntryAction,
   FetchEntryErrorAction,
-  FetchEntrySuccessAction,
-  FORGET_ENTRY,
-  ForgetEntryAction
+  FetchEntrySuccessAction
 } from "store/entry/types";
 
 export const fetchEntry = (id: string): FetchEntryAction => {
@@ -33,11 +31,5 @@ export const fetchEntryError = (
   return {
     type: FETCH_ENTRY_ERROR,
     payload: { id, error }
-  };
-};
-
-export const forgetEntry = (): ForgetEntryAction => {
-  return {
-    type: FORGET_ENTRY
   };
 };
